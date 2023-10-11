@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleUI
 {
+  
+   
+
+   
+
+
+
     class Program
     {
         static void Main(string[] args)
@@ -32,6 +39,7 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
+            List<Vehicle> vehicles = new List<Vehicle>();
 
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
@@ -39,12 +47,73 @@ namespace ConsoleUI
              * Set the properties with object initializer syntax
              */
 
+            Car car = new Car
+            {
+                Year = "2023",
+                Make = "Toyota",
+                Model = "Camry",
+                HasTrunk = true
+            };
+
+            Motorcycle motorcycle = new Motorcycle
+            {
+                Year = "2022",
+                Make = "Harley-Davidson",
+                Model = "Sportster",
+                HasSideCart = false
+            };
+
+            Vehicle vehicle1 = new Car
+            {
+                Year = "2021",
+                Make = "Ford",
+                Model = "Focus",
+                HasTrunk = true
+            };
+
+            Vehicle vehicle2 = new Motorcycle
+            {
+                Year = "2020",
+                Make = "Ducati",
+                Model = "Monster",
+                HasSideCart = false
+            };
+
+
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
 
+            vehicles.Add(car);
+            vehicles.Add(motorcycle);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"Year: {vehicle.Year}, Make: {vehicle.Make}, Model: {vehicle.Model}");
+
+                if (vehicle is Car carInList)
+                {
+                    Console.WriteLine($"HasTrunk: {carInList.HasTrunk}");
+                }
+
+                if (vehicle is Motorcycle motorcycleInList)
+                {
+                    Console.WriteLine($"HasSideCart: {motorcycleInList.HasSideCart}");
+                }
+            }
+
+
             // Call each of the drive methods for one car and one motorcycle
+
+            car.DriveAbstract();
+            car.DriveVirtual();
+
+            motorcycle.DriveAbstract();
+            motorcycle.DriveVirtual();
+
 
             #endregion            
             Console.ReadLine();
